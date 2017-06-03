@@ -12,19 +12,19 @@ namespace WebMailService.Model
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
-        public Guid From { get; set; }
+        public string From { get; set; }
         public DateTime Date { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
         public bool IsDeleted { get; set; }
         public Guid BelongsTo { get; set; }
 
-        public ICollection<Receiver> ReceiversIDs { get; set; }
+        public virtual ICollection<Receiver> ReceiversEmail { get; set; }
 
         public override string ToString()
         {
             return string.Format("ID: {0}, From: {1}, To: {2}, Date: {3}, Subject: {4}, Message: {5}, BelongsTo: {6}", 
-                ID, From, ReceiversIDs.Count, Date, Subject, Message, BelongsTo);
+                ID, From, ReceiversEmail.Count, Date, Subject, Message, BelongsTo);
         }
     }
 }

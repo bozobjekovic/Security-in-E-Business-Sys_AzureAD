@@ -9,10 +9,10 @@ namespace WebMailService.Repository
 {
     public interface IEmail
     {
-        Email ComposeEmail(Email email);
-        ICollection<Email> GetInbox(Guid userID);
-        ICollection<Email> GetSent(Guid userID);
-        ICollection<Email> GetTrash(Guid userID);
+        void ComposeEmail(Email email, List<Guid> senderAndReceiversIDs);
+        ICollection<Email> GetInbox(User user);
+        ICollection<Email> GetSent(User user);
+        ICollection<Email> GetTrash(User user);
         Email MoveToTrash(Guid emailID);
         void DeleteEmail(Guid emailID);
     }

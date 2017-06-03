@@ -12,6 +12,9 @@ namespace WebMailService.Model
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Guid ObjectId { get; set; }
+        public string EmailAddress { get; set; }
+
+        [Required]
+        public virtual Email Email { get; set; }
     }
 }

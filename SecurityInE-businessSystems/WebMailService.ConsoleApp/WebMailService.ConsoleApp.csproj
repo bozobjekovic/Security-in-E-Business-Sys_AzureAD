@@ -65,6 +65,14 @@
       <Project>{54ef1ed7-4d7f-4713-afb7-4fb696cef6df}</Project>
       <Name>WebMailService.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebMailService.Repository.DB\WebMailService.Repository.DB.csproj">
+      <Project>{8F951675-0DD5-433C-B91D-D9E488D3AD3C}</Project>
+      <Name>WebMailService.Repository.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebMailService.Repository\WebMailService.Repository.csproj">
+      <Project>{F247C3B0-E362-4A9F-9C9A-51F40C62F099}</Project>
+      <Name>WebMailService.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
