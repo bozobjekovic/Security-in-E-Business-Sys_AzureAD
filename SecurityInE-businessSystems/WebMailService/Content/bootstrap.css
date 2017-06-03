@@ -315,7 +315,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #eee;
 }
 
 input,
@@ -386,7 +386,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #999999;
 }
 
 .sr-only {
@@ -1999,7 +1999,7 @@ textarea.input-lg {
 
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 6px 20px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
@@ -2401,14 +2401,16 @@ input[type="button"].btn-block {
 }
 
 .glyphicon {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
+    font-size: 12px;
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
 }
 
 .glyphicon-asterisk:before {
@@ -3824,7 +3826,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 
 .nav > li.disabled > a {
@@ -3921,7 +3923,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-pills > li > a {
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 .nav-pills > li + li {
@@ -4898,7 +4900,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   white-space: nowrap;
   vertical-align: baseline;
   background-color: #999999;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .badge:empty {
@@ -6813,4 +6815,8 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+}
+
+.no_border {
+    border-radius: 0;
 }

@@ -2,30 +2,61 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<style>
+    body { margin-top: 50px; }
+    .nav-tabs .glyphicon:not(.no-margin) { margin-right: 10px; }
+    .tab-pane .list-group-item:first-child { border-top-right-radius: 0px; border-top-left-radius: 0px; }
+    .tab-pane .list-group-item:last-child { border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; }
+    .tab-pane .list-group .checkbox { display: inline-block; margin: 0px; }
+    .tab-pane .list-group input[type="checkbox"] { margin-top: 2px; }
+    .tab-pane .list-group .glyphicon { margin-right: 5px; }
+    .tab-pane .list-group .glyphicon:hover { color: #FFBC00; }
+    a.list-group-item.read { color: #222; background-color: #F3F3F3; }
+    hr { margin-top: 5px; margin-bottom: 10px; }
+    .nav-pills > li > a { padding: 5px 10px; }
+    .ad { padding: 5px; background: #F5F5F5; color: #222; font-size: 80%; border: 1px solid #E5E5E5; }
+    .ad a.title { color: #15C; text-decoration: none; font-weight: bold; font-size: 110%; }
+    .ad a.url { color: #093; text-decoration: none; }
+</style>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <h4 style="font-weight: bold;">MAIL SERVICE</h4>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <!-- Split button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default no_border">
+                    <div class="checkbox" style="margin: 0;">
+                        <label>
+                            <input type="checkbox"><span>All</span>
+                        </label>
+                    </div>
+                </button>
+            </div>
+            <button type="button" class="btn btn-default no_border" data-toggle="tooltip" title="Refresh" style="padding-left: 31px;">
+                <span class="glyphicon glyphicon-refresh"></span>   
+            </button>
+            <!-- Single button -->
+            <div class="pull-right" style="margin-top: 7px;">
+                <span class="text-muted"><b>Total emails: </b><b>277</b></span>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <hr />
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <a href="#" class="btn btn-danger btn-sm btn-block no_border" role="button">COMPOSE</a>
+            <hr />
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active">
+                    <a href="#"><span class="glyphicon glyphicon-inbox"></span><span class="badge pull-right">42</span> Inbox </a>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-send"></span> Sent Mail</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-trash"></span><span class="badge pull-right">3</span>Trash</a></li>
+            </ul>
+        </div>
+        @Html.Partial("EmailsPartial")
     </div>
 </div>
