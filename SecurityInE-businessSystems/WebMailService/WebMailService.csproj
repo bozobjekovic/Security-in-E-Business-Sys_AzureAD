@@ -195,6 +195,7 @@
     <Compile Include="Helpers\UserDetails.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -239,6 +240,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\EmailsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebMailService.BusinessLogic.Managers\WebMailService.BusinessLogic.Managers.csproj">
+      <Project>{6872E465-4441-45AE-8CA9-F96EC23DFADE}</Project>
+      <Name>WebMailService.BusinessLogic.Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebMailService.BusinessLogic\WebMailService.BusinessLogic.csproj">
+      <Project>{6FBFF5D4-3524-4273-B5EA-645CA8C51798}</Project>
+      <Name>WebMailService.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebMailService.Model\WebMailService.Model.csproj">
+      <Project>{54EF1ED7-4D7F-4713-AFB7-4FB696CEF6DF}</Project>
+      <Name>WebMailService.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

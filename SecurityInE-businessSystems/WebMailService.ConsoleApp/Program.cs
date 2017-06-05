@@ -26,6 +26,7 @@ namespace WebMailService.ConsoleApp
                 Subject = "Test1",
                 Message = "Test email 1",
                 IsDeleted = false,
+                IsRead = false,
                 BelongsTo = new Guid()
             };
 
@@ -38,24 +39,25 @@ namespace WebMailService.ConsoleApp
                 Subject = "Test2",
                 Message = "Test email 2",
                 IsDeleted = false,
+                IsRead = false,
                 BelongsTo = new Guid()
             };
 
-            //WebMailDBContext wmDBc = new WebMailDBContext();
+            WebMailDBContext wmDBc = new WebMailDBContext();
 
-            //Console.WriteLine("Insterting records ...");
-            //wmDBc.Emails.Add(e1);
-            //wmDBc.Emails.Add(e2);
+            Console.WriteLine("Insterting records ...");
+            wmDBc.Emails.Add(e1);
+            wmDBc.Emails.Add(e2);
 
-            //wmDBc.SaveChanges();
+            wmDBc.SaveChanges();
 
-            //Console.WriteLine("Insterting records finished!");
+            Console.WriteLine("Insterting records finished!");
 
             //var inboxMails = emailRep.GetTrash(new User() { ID = new Guid("00000000-0000-0000-0000-000000000000"), Email = "bozo.bjekovic@gmail.com" });
             //var iddxMails = emailRep.MoveToTrash(new Guid("9ECCE514-EC47-E711-B37B-38D547127E6E"));
             //var iasdasdoxMails = emailRep.GetTrash(new User() { ID = new Guid("00000000-0000-0000-0000-000000000000"), Email = "bozo.bjekovic@gmail.com" });
-            emailRep.DeleteEmail(new Guid("BBAD5294-5248-E711-B37B-38D547127E6E"));
-            var inb234oxMails = emailRep.GetSent(new User() { ID = new Guid("00000000-0000-0000-0000-000000000000"), Email = "bozo.bjekovic@gmail.com" });
+            //emailRep.DeleteEmail(new Guid("BBAD5294-5248-E711-B37B-38D547127E6E"));
+            //var inb234oxMails = emailRep.GetSent(new User() { ID = new Guid("00000000-0000-0000-0000-000000000000"), Email = "bozo.bjekovic@gmail.com" });
 
             //foreach (var item in wmDBc.Emails.ToList())
             //{

@@ -17,6 +17,7 @@ namespace WebMailService.Model
         public string Subject { get; set; }
         public string Message { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsRead { get; set; }
         public Guid BelongsTo { get; set; }
 
         public virtual ICollection<Receiver> ReceiversEmail { get; set; }
