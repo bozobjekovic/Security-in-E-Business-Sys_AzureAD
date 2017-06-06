@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebMailService.BusinessLogic;
 using WebMailService.BusinessLogic.Managers;
+using WebMailService.Model;
+using WebMailService.Models;
 
 namespace WebMailService.Controllers
 {
@@ -16,7 +18,26 @@ namespace WebMailService.Controllers
 
         public ActionResult Index()
         {
-            //emailManager.
+            string a = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            User user = new User()
+            {
+                ID = Guid.Parse(ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value),
+                Email = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value
+            };
+            ICollection<Email> emails = emailManager.GetInbox(user);
+            EmailViewModel emailVM = new EmailViewModel(50, 5555, emails);
+            return View(emailVM);
+        }
+
+        // GET: Email/Sent
+        public ActionResult Sent()
+        {
+            return View();
+        }
+
+        // GET: Email/Trash
+        public ActionResult Trash()
+        {
             return View();
         }
     }

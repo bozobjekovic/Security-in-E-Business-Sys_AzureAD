@@ -239,9 +239,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\EmailsPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WebMailService.BusinessLogic.Managers\WebMailService.BusinessLogic.Managers.csproj">
       <Project>{6872E465-4441-45AE-8CA9-F96EC23DFADE}</Project>
       <Name>WebMailService.BusinessLogic.Managers</Name>
@@ -254,6 +251,12 @@
       <Project>{54EF1ED7-4D7F-4713-AFB7-4FB696CEF6DF}</Project>
       <Name>WebMailService.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\EmailsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Sent.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
