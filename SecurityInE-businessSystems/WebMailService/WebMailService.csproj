@@ -192,7 +192,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ADClient.cs" />
     <Compile Include="Helpers\ComposeEmail.cs" />
+    <Compile Include="Helpers\ParsedReceivers.cs" />
     <Compile Include="Helpers\UserDetails.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />

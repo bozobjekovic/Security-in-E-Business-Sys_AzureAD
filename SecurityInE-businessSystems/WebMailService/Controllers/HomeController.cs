@@ -1,8 +1,12 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+﻿using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebMailService.BusinessLogic;
@@ -17,6 +21,8 @@ namespace WebMailService.Controllers
     public class HomeController : Controller
     {
         private enum TypeEmailDetails { Inbox, Sent, Trash }
+
+        private ADClient adClient = new ADClient();
         private IEmailManager emailManager = new EmailManager();
 
         private string urlType_objectidentifier = "http://schemas.microsoft.com/identity/claims/objectidentifier";
@@ -49,30 +55,51 @@ namespace WebMailService.Controllers
 
         // GET: Email/Compose
         [HttpPost]
-        public ActionResult Compose(ComposeEmail composeEmail)
+        public async Task<ActionResult> Compose(ComposeEmail composeEmail)
         {
-            string[] receivers = composeEmail.Receivers.Split(',');
-            List<Guid> receiversIDs = new List<Guid>(); // added senders id (MY)
+            string[] receiversEmails = composeEmail.Receivers.Split(',');
 
-            foreach (var receiver in receivers)
+            ParsedReceivers parsedReceivers = await GetParsedReceivers(receiversEmails);
+            Email email = new Email()
             {
-                try
-                {
+                From = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value,
+                Date = DateTime.Now,
+                Subject = composeEmail.Subject,
+                Message = composeEmail.Message,
+                ReceiversEmail = parsedReceivers.Receivers
+            };
+            emailManager.ComposeEmail(email, parsedReceivers.senderAndReceiversIDs);
 
-                }
-                catch (AdalException)
+            return RedirectToAction("Sent");
+        }
+
+        private async Task<ParsedReceivers> GetParsedReceivers(string[] receiversEmails)
+        {
+            ParsedReceivers parsedReceivers = new ParsedReceivers();
+            // sender's id
+            parsedReceivers.senderAndReceiversIDs.Add(Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value)); 
+
+            foreach (var receiverEmail in receiversEmails)
+            {
+                Guid receiverID = await adClient.GetReceiverIDbyEmail(receiverEmail);
+                if (!receiverID.Equals(Guid.Empty))
                 {
-                    return View("Error");
+                    parsedReceivers.senderAndReceiversIDs.Add(receiverID);
+                    parsedReceivers.Receivers.Add(new Receiver() { EmailAddress = receiverEmail, ReceiverExists = true });
+                }
+                else
+                {
+                    parsedReceivers.Receivers.Add(new Receiver() { EmailAddress = receiverEmail, ReceiverExists = false });
                 }
             }
 
-            return View();
+            return parsedReceivers;
         }
 
         [NonAction]
         private EmailDetails GetEmailDetailsForUser(TypeEmailDetails type)
         {
-            User user = new User()
+            Model.User user = new Model.User()
             {
                 ID = Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value),
                 Email = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value

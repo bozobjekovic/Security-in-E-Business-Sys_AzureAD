@@ -13,11 +13,10 @@ namespace WebMailService.Repository.DB
     {
         private WebMailDBContext webMailDBContext = new WebMailDBContext();
 
-        public void ComposeEmail(Email email, List<Guid> senderAndReceiversIDs)
+        public void ComposeEmail(List<Email> emailsToDB)
         {
-            foreach (var userID in senderAndReceiversIDs)
+            foreach (var email in emailsToDB)
             {
-                email.BelongsTo = userID;
                 webMailDBContext.Emails.Add(email);
             }
             webMailDBContext.SaveChanges();

@@ -10,7 +10,7 @@ namespace WebMailService.Repository
 {
     public interface IEmail
     {
-        void ComposeEmail(Email email, List<Guid> senderAndReceiversIDs);
+        void ComposeEmail(List<Email> emailsToDB);
         EmailDetails GetInbox(User user);
         EmailDetails GetSent(User user);
         EmailDetails GetTrash(User user);

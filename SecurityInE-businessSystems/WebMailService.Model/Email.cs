@@ -22,6 +22,21 @@ namespace WebMailService.Model
 
         public virtual ICollection<Receiver> ReceiversEmail { get; set; }
 
+        public Email()
+        {
+        }
+
+        public Email(Email email, Guid belongsTo, bool isRead)
+        {
+            From = email.From;
+            Date = email.Date;
+            Subject = email.Subject;
+            Message = email.Message;
+            IsRead = isRead;
+            BelongsTo = belongsTo;
+            ReceiversEmail = email.ReceiversEmail.ToList();
+        }
+
         public override string ToString()
         {
             return string.Format("ID: {0}, From: {1}, To: {2}, Date: {3}, Subject: {4}, Message: {5}, BelongsTo: {6}", 

@@ -16,7 +16,15 @@ namespace WebMailService.BusinessLogic.Managers
 
         public void ComposeEmail(Email email, List<Guid> senderAndReceiversIDs)
         {
-            emailDBRepository.ComposeEmail(email, senderAndReceiversIDs);
+            List<Email> emailsToDB = new List<Email>();
+            emailsToDB.Add(new Email(email, senderAndReceiversIDs[0], true));
+
+            for (int i = 1; i < senderAndReceiversIDs.Count; i++)
+            {
+                emailsToDB.Add(new Email(email, senderAndReceiversIDs[i], false));
+            }
+
+            emailDBRepository.ComposeEmail(emailsToDB);
         }
 
         public void DeleteEmail(Guid emailID)
