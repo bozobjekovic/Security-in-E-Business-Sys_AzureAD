@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebMailService.Context;
+using WebMailService.Helpers;
 using WebMailService.Model;
 
 namespace WebMailService.Repository.DB
@@ -29,19 +30,34 @@ namespace WebMailService.Repository.DB
             webMailDBContext.SaveChanges();
         }
 
-        public ICollection<Email> GetInbox(User user)
+        public EmailDetails GetInbox(User user)
         {
-            return webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).ToArray();
+            EmailDetails emailDetails = new EmailDetails();
+            emailDetails.Emails = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).ToArray();
+            emailDetails.TotalMessages = emailDetails.Emails.Count();
+            emailDetails.InboxNewMessages = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && !e.IsRead && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).Count();
+
+            return emailDetails;
         }
 
-        public ICollection<Email> GetSent(User user)
+        public EmailDetails GetSent(User user)
         {
-            return webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && e.From.Equals(user.Email)).ToArray();
+            EmailDetails emailDetails = new EmailDetails();
+            emailDetails.Emails = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && e.From.Equals(user.Email)).ToArray();
+            emailDetails.TotalMessages = emailDetails.Emails.Count();
+            emailDetails.InboxNewMessages = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && !e.IsRead && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).Count();
+
+            return emailDetails;
         }
 
-        public ICollection<Email> GetTrash(User user)
+        public EmailDetails GetTrash(User user)
         {
-            return webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && e.IsDeleted).ToArray();
+            EmailDetails emailDetails = new EmailDetails();
+            emailDetails.Emails = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && e.IsDeleted).ToArray();
+            emailDetails.TotalMessages = emailDetails.Emails.Count();
+            emailDetails.InboxNewMessages = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && !e.IsRead && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).Count();
+
+            return emailDetails;
         }
 
         public Email MoveToTrash(Guid emailID)

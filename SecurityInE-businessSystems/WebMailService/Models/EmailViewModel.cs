@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebMailService.Helpers;
 using WebMailService.Model;
 
 namespace WebMailService.Models
@@ -16,6 +17,22 @@ namespace WebMailService.Models
         public EmailViewModel()
         {
             
+        }
+
+        public EmailViewModel(EmailDetails emailDetails)
+        {
+            SelectedLabel = "Inbox";
+            InboxNewMessages = emailDetails.InboxNewMessages;
+            TotalMessages = emailDetails.TotalMessages;
+            Emails = emailDetails.Emails;
+        }
+
+        public EmailViewModel(string selectedLabel, EmailDetails emailDetails)
+        {
+            SelectedLabel = selectedLabel;
+            InboxNewMessages = emailDetails.InboxNewMessages;
+            TotalMessages = emailDetails.TotalMessages;
+            Emails = emailDetails.Emails;
         }
 
         public EmailViewModel(int inboxNewMessages, int totalMessages, ICollection<Email> emails)

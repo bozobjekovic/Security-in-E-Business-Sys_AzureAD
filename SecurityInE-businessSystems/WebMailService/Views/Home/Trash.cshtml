@@ -1,7 +1,8 @@
 ﻿@model WebMailService.Models.EmailViewModel
 
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Trash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -74,4 +75,3 @@
         @Html.Partial("_EmailsPartial", Model.Emails)
     </div>
 </div>
-

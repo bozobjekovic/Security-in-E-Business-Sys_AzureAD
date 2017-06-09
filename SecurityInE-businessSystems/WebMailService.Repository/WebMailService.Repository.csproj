@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebMailService.Helpers\WebMailService.Helpers.csproj">
+      <Project>{65A61053-983F-4764-9AD6-FE87E94FABD9}</Project>
+      <Name>WebMailService.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebMailService.Model\WebMailService.Model.csproj">
       <Project>{54EF1ED7-4D7F-4713-AFB7-4FB696CEF6DF}</Project>
       <Name>WebMailService.Model</Name>

@@ -1,0 +1,37 @@
+﻿
+<a href="#" class="btn btn-danger btn-sm btn-block no_border" data-toggle="modal" data-target="#composeModal" role="button">COMPOSE</a>
+
+<!--Compose Modal -->
+<div class="modal fade" id="composeModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content no_border">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Compose Message</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2" for="inputTo" style="margin-top: 7px;">To</label>
+                        <div class="col-sm-10"><input type="email" class="form-control no_border no_max_width" id="inputTo" placeholder="enter recipients separated by comma"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2" for="inputSubject" style="margin-top: 7px;">Subject</label>
+                        <div class="col-sm-10"><input type="text" class="form-control no_border no_max_width" id="inputSubject" placeholder="subject"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12" for="inputBody">Message</label>
+                        <div class="col-sm-12"><textarea class="form-control no_border no_max_width" id="inputBody" rows="10"></textarea></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left no_border" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger no_border">Send</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -6820,3 +6820,6 @@ td.visible-print {
 .no_border {
     border-radius: 0;
 }
+.no_max_width {
+    max-width: none;
+}

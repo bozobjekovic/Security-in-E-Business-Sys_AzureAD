@@ -247,16 +247,26 @@
       <Project>{6FBFF5D4-3524-4273-B5EA-645CA8C51798}</Project>
       <Name>WebMailService.BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebMailService.Helpers\WebMailService.Helpers.csproj">
+      <Project>{65A61053-983F-4764-9AD6-FE87E94FABD9}</Project>
+      <Name>WebMailService.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebMailService.Model\WebMailService.Model.csproj">
       <Project>{54EF1ED7-4D7F-4713-AFB7-4FB696CEF6DF}</Project>
       <Name>WebMailService.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\EmailsPartial.cshtml" />
+    <Content Include="Views\Home\_EmailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Sent.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Trash.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_ComposePartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

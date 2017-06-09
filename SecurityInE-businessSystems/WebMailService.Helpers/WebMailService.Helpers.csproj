@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8F951675-0DD5-433C-B91D-D9E488D3AD3C}</ProjectGuid>
+    <ProjectGuid>{65A61053-983F-4764-9AD6-FE87E94FABD9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebMailService.Repository.DB</RootNamespace>
-    <AssemblyName>WebMailService.Repository.DB</AssemblyName>
+    <RootNamespace>WebMailService.Helpers</RootNamespace>
+    <AssemblyName>WebMailService.Helpers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,30 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmailRepository.cs" />
+    <Compile Include="EmailDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebMailService.Context\WebMailService.Context.csproj">
-      <Project>{3630CE34-5D3A-487F-A93A-5067C5082E26}</Project>
-      <Name>WebMailService.Context</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebMailService.Helpers\WebMailService.Helpers.csproj">
-      <Project>{65A61053-983F-4764-9AD6-FE87E94FABD9}</Project>
-      <Name>WebMailService.Helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebMailService.Model\WebMailService.Model.csproj">
       <Project>{54EF1ED7-4D7F-4713-AFB7-4FB696CEF6DF}</Project>
       <Name>WebMailService.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebMailService.Repository\WebMailService.Repository.csproj">
-      <Project>{f247c3b0-e362-4a9f-9c9a-51f40c62f099}</Project>
-      <Name>WebMailService.Repository</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

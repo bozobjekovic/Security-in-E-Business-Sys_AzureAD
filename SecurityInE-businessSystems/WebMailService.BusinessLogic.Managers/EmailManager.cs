@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebMailService.Helpers;
 using WebMailService.Model;
 using WebMailService.Repository;
 using WebMailService.Repository.DB;
@@ -23,17 +24,17 @@ namespace WebMailService.BusinessLogic.Managers
             emailDBRepository.DeleteEmail(emailID);
         }
 
-        public ICollection<Email> GetInbox(User user)
+        public EmailDetails GetInbox(User user)
         {
             return emailDBRepository.GetInbox(user);
         }
 
-        public ICollection<Email> GetSent(User user)
+        public EmailDetails GetSent(User user)
         {
             return emailDBRepository.GetSent(user);
         }
 
-        public ICollection<Email> GetTrash(User user)
+        public EmailDetails GetTrash(User user)
         {
             return emailDBRepository.GetTrash(user);
         }
