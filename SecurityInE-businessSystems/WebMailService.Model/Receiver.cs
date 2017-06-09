@@ -13,6 +13,7 @@ namespace WebMailService.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string EmailAddress { get; set; }
+        public bool ReceiverExists { get; set; }
 
         [Required]
         public virtual Email Email { get; set; }

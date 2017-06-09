@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -44,6 +45,28 @@ namespace WebMailService.Controllers
             EmailViewModel emailVM = new EmailViewModel("Trash", emailDetails);
 
             return View(emailVM);
+        }
+
+        // GET: Email/Compose
+        [HttpPost]
+        public ActionResult Compose(ComposeEmail composeEmail)
+        {
+            string[] receivers = composeEmail.Receivers.Split(',');
+            List<Guid> receiversIDs = new List<Guid>(); // added senders id (MY)
+
+            foreach (var receiver in receivers)
+            {
+                try
+                {
+
+                }
+                catch (AdalException)
+                {
+                    return View("Error");
+                }
+            }
+
+            return View();
         }
 
         [NonAction]

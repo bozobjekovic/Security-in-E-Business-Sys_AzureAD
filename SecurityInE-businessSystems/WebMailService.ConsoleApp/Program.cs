@@ -17,8 +17,8 @@ namespace WebMailService.ConsoleApp
             Email e1 = new Email()
             {
                 From = "testU1@bozobjekovicgmail.onmicrosoft.com",
-                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU2@bozobjekovicgmail.onmicrosoft.com" },
-                                                        new Receiver() { EmailAddress = "testU3@bozobjekovicgmail.onmicrosoft.com" } },
+                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU2@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true },
+                                                        new Receiver() { EmailAddress = "testU3@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true } },
                 Date = DateTime.Now,
                 Subject = "Test1",
                 Message = "Test email 1",
@@ -30,8 +30,8 @@ namespace WebMailService.ConsoleApp
             Email e11 = new Email()
             {
                 From = "testU1@bozobjekovicgmail.onmicrosoft.com",
-                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU2@bozobjekovicgmail.onmicrosoft.com" },
-                                                        new Receiver() { EmailAddress = "testU3@bozobjekovicgmail.onmicrosoft.com" } },
+                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU2@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true },
+                                                        new Receiver() { EmailAddress = "testU3@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true } },
                 Date = DateTime.Now,
                 Subject = "Test1",
                 Message = "Test email 1",
@@ -43,8 +43,8 @@ namespace WebMailService.ConsoleApp
             Email e12 = new Email()
             {
                 From = "testU1@bozobjekovicgmail.onmicrosoft.com",
-                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU2@bozobjekovicgmail.onmicrosoft.com" },
-                                                        new Receiver() { EmailAddress = "testU3@bozobjekovicgmail.onmicrosoft.com" } },
+                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU2@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true },
+                                                        new Receiver() { EmailAddress = "testU3@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true } },
                 Date = DateTime.Now,
                 Subject = "Test1",
                 Message = "Test email 1",
@@ -57,7 +57,7 @@ namespace WebMailService.ConsoleApp
             Email e2 = new Email()
             {
                 From = "testU2@bozobjekovicgmail.onmicrosoft.com",
-                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU1@bozobjekovicgmail.onmicrosoft.com" } },
+                ReceiversEmail = new List<Receiver>() { new Receiver() { EmailAddress = "testU1@bozobjekovicgmail.onmicrosoft.com", ReceiverExists = true } },
                 Date = DateTime.Now.AddDays(10),
                 Subject = "Test2",
                 Message = "Test email 2",
