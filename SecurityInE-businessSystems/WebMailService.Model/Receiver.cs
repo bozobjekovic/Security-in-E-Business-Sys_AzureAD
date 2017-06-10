@@ -17,5 +17,15 @@ namespace WebMailService.Model
 
         [Required]
         public virtual Email Email { get; set; }
+
+        public Receiver()
+        {
+        }
+
+        public Receiver(Receiver receiver)
+        {
+            EmailAddress = receiver.EmailAddress;
+            ReceiverExists = receiver.ReceiverExists;
+        }
     }
 }

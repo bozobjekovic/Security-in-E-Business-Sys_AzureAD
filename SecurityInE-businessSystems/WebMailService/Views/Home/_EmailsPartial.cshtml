@@ -11,7 +11,34 @@
                             <input type="checkbox">
                         </label>
                     </div>
-                    <span class="name" style="min-width: 120px; display: inline-block;">Bhaumik Patel</span> <span class="">@email.Subject</span>
+                    @if (@Model.SelectedLabel.Equals("Sent"))
+                    {
+                        <span class="name" style="min-width: 120px; display: inline-block;">
+                            To: @email.ReceiversEmail.ElementAt(0).EmailAddress.Substring(0, email.ReceiversEmail.ElementAt(0).EmailAddress.IndexOf('@'))
+                        </span>
+                    }
+                    else if (@Model.SelectedLabel.Equals("Trash"))
+                    {
+                        if (email.From.Equals(User.Identity.Name))
+                        {
+                            <span class="name" style="min-width: 120px; display: inline-block;">
+                                To: @email.ReceiversEmail.ElementAt(0).EmailAddress.Substring(0, email.ReceiversEmail.ElementAt(0).EmailAddress.IndexOf('@'))
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="name" style="min-width: 120px; display: inline-block;">
+                                @email.From.Substring(0, email.From.IndexOf('@'))
+                            </span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="name" style="min-width: 120px; display: inline-block;">
+                            @email.From.Substring(0, email.From.IndexOf('@'))
+                        </span>
+                    }
+                    <span class="">@email.Subject</span>
                     <span class="text-muted" style="font-size: 11px;">@email.Message</span><span class="badge">@email.Date.ToString("dd/MMM/yy hh:mm tt")</span>
                 </a>
             }

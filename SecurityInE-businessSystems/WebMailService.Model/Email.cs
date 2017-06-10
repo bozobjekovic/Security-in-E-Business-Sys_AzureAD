@@ -34,7 +34,16 @@ namespace WebMailService.Model
             Message = email.Message;
             IsRead = isRead;
             BelongsTo = belongsTo;
-            ReceiversEmail = email.ReceiversEmail.ToList();
+            ReceiversEmail = new List<Receiver>();
+            AddReceivers(email.ReceiversEmail.ToList());
+        }
+
+        private void AddReceivers(List<Receiver> receivers)
+        {
+            foreach (var receiver in receivers)
+            {
+                ReceiversEmail.Add(new Receiver(receiver));
+            }
         }
 
         public override string ToString()

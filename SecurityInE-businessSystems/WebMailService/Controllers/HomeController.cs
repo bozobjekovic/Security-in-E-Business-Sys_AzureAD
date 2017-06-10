@@ -65,8 +65,13 @@ namespace WebMailService.Controllers
         // GET: Home/MoveToTrash
         public ActionResult MoveToTrahs(Guid emailID, string selectedLabel)
         {
-            emailManager.MoveToTrash(emailID);
+            if (selectedLabel.Equals("Trash"))
+            {
+                emailManager.DeleteEmail(emailID);
+                return RedirectToAction("Trash");
+            }
 
+            emailManager.MoveToTrash(emailID);
             return selectedLabel.Equals("Inbox") ? RedirectToAction("Index") : RedirectToAction("Sent");
         }
 

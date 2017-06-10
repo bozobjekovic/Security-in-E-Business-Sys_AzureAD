@@ -24,7 +24,10 @@ namespace WebMailService.BusinessLogic.Managers
                 emailsToDB.Add(new Email(email, senderAndReceiversIDs[i], false));
             }
 
-            emailDBRepository.ComposeEmail(emailsToDB);
+            foreach (var em in emailsToDB)
+            {
+                emailDBRepository.ComposeEmail(em);
+            }
         }
 
         public void DeleteEmail(Guid emailID)
