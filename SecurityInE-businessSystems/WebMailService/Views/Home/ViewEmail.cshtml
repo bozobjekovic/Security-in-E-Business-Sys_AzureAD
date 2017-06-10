@@ -20,6 +20,11 @@
     .ad { padding: 5px; background: #F5F5F5; color: #222; font-size: 80%; border: 1px solid #E5E5E5; }
     .ad a.title { color: #15C; text-decoration: none; font-weight: bold; font-size: 110%; }
     .ad a.url { color: #093; text-decoration: none; }
+    #custom-search-input { padding: 0; width: 250px; height: 34px; float: left; border: solid 1px #cccccc; background-color: #fff; }
+    #custom-search-input input { border: 0; box-shadow: none; }  
+    #custom-search-input button { margin: 2px 0 0 0; background: none; box-shadow: none; border: 0; color: #666666; padding: 0 0 0 10px; border-left: solid 1px #ccc; }
+    #custom-search-input button:hover { border: 0; box-shadow: none; border-left: solid 1px #ccc; }
+    #custom-search-input .glyphicon-search { font-size: 12px; }
 </style>
 
 <div class="container">
@@ -29,15 +34,27 @@
         </div>
         <div class="col-sm-9 col-md-10">
             <!-- Split button -->
-            <div class="btn-group">
+            <div class="btn-group" style="float: left; margin-right: 3px;">
                 <a href="/Home/MoveToTrahs?emailID=@Model.Email.ID&selectedLabel=@Model.SelectedLabel" role="button" class="btn btn-default no_border" data-toggle="tooltip" title="Delete" style="width: 77px; padding-left: 25px;">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
             </div>
-            <button type="button" class="btn btn-default no_border" data-toggle="tooltip" title="Refresh" style="width: 77px; padding-left: 25px;" onclick="refreshPage()">
+            <button type="button" class="btn btn-default no_border" data-toggle="tooltip" title="Refresh" style="float: left; margin-right: 3px; width: 77px; padding-left: 25px;" onclick="refreshPage()">
                 <span class="glyphicon glyphicon-refresh"></span>
             </button>
             <script> function refreshPage() { window.location.reload(); } </script>
+            <form action="/Home/Search" method="get">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12" style="padding: 0 8px;">
+                        <input type="text" name="searchText" class="form-control input-lg" placeholder="Search emails ..." style="height: 32px; font-size: 13px; padding: 5px;" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <hr />

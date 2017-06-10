@@ -60,5 +60,10 @@ namespace WebMailService.BusinessLogic.Managers
         {
             return emailDBRepository.MoveToTrash(emailID);
         }
+
+        public EmailDetails SearchEmails(User user, string searchWord)
+        {
+            return emailDBRepository.SearchEmailsByUsersEmailsAndSubjectAndMessages(user, searchWord);
+        }
     }
 }

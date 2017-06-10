@@ -18,5 +18,6 @@ namespace WebMailService.Repository
         Email MoveToTrash(Guid emailID);
         void DeleteEmail(Guid emailID);
         void SetAsRead(Guid emailID);
+        EmailDetails SearchEmailsByUsersEmailsAndSubjectAndMessages(User user, string searchWord);
     }
 }

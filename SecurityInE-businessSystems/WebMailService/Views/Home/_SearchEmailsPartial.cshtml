@@ -1,0 +1,50 @@
+﻿@model WebMailService.Models.EmailViewModel
+
+<div class="col-sm-9 col-md-10">
+    <div class="tab-pane fade in active" id="home">
+        <div class="list-group">
+            @foreach (var email in Model.Emails)
+            {
+                <a href="/Home/ViewEmail?emailID=@email.ID&selectedLabel=@Model.SelectedLabel" class="@( email.IsRead ? "list-group-item read" : "list-group-item")">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">
+                        </label>
+                    </div>
+                    @if (email.IsDeleted)
+                    {
+                        if (email.From.Equals(User.Identity.Name))
+                        {
+                            <span class="name" style="min-width: 120px; display: inline-block;">
+                                <span class="badge">Trash</span> To: @email.ReceiversEmail.ElementAt(0).EmailAddress.Substring(0, email.ReceiversEmail.ElementAt(0).EmailAddress.IndexOf('@'))
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="name" style="min-width: 120px; display: inline-block;">
+                                <span class="badge">Trash</span> @email.From.Substring(0, email.From.IndexOf('@'))
+                            </span>
+                        }
+                    }
+                    else
+                    {
+                        if (email.From.Equals(User.Identity.Name))
+                        {
+                            <span class="name" style="min-width: 120px; display: inline-block;">
+                                <span class="badge">Sent</span> To: @email.ReceiversEmail.ElementAt(0).EmailAddress.Substring(0, email.ReceiversEmail.ElementAt(0).EmailAddress.IndexOf('@'))
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="name" style="min-width: 120px; display: inline-block;">
+                                <span class="badge">Inbox</span> @email.From.Substring(0, email.From.IndexOf('@'))
+                            </span>
+                        }
+                    }
+                    <span class="">@email.Subject</span>
+                    <span class="text-muted" style="font-size: 11px;">@email.Message</span><span class="badge">@email.Date.ToString("dd/MMM/yy hh:mm tt")</span>
+                </a>
+            }
+        </div>
+    </div>
+</div>

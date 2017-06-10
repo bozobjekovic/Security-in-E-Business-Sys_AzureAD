@@ -1,7 +1,8 @@
 ﻿@model WebMailService.Models.EmailViewModel
 
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -88,7 +89,6 @@
                 </li>
             </ul>
         </div>
-        @Html.Partial("_EmailsPartial", Model)
+        @Html.Partial("_SearchEmailsPartial", Model)
     </div>
 </div>
-

@@ -75,6 +75,15 @@ namespace WebMailService.Controllers
             return selectedLabel.Equals("Inbox") ? RedirectToAction("Index") : RedirectToAction("Sent");
         }
 
+        public ActionResult Search(string searchText)
+        {
+            Model.User user = adClient.GetLoggedClient();
+            EmailDetails emailDetails = emailManager.SearchEmails(user, searchText);
+            EmailViewModel emailVM = new EmailViewModel("", emailDetails);
+
+            return View(emailVM);
+        }
+
         // POST: Home/Compose
         [HttpPost]
         public async Task<ActionResult> Compose(ComposeEmail composeEmail)
@@ -121,11 +130,7 @@ namespace WebMailService.Controllers
         [NonAction]
         private EmailDetails GetEmailDetailsForUser(TypeEmailDetails type, Guid emailID = new Guid())
         {
-            Model.User user = new Model.User()
-            {
-                ID = Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value),
-                Email = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value
-            };
+            Model.User user = adClient.GetLoggedClient();
 
             switch (type)
             {

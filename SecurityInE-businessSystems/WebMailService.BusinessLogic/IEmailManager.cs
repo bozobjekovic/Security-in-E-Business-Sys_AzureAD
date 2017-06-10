@@ -17,5 +17,6 @@ namespace WebMailService.BusinessLogic
         EmailDetails GetTrash(User user);
         Email MoveToTrash(Guid emailID);
         void DeleteEmail(Guid emailID);
+        EmailDetails SearchEmails(User user, string searchWord);
     }
 }

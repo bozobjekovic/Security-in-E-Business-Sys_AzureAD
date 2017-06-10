@@ -73,6 +73,22 @@ namespace WebMailService.Repository.DB
             return email;
         }
 
+        public EmailDetails SearchEmailsByUsersEmailsAndSubjectAndMessages(User user, string searchWord)
+        {
+            var searchW = searchWord.ToUpper();
+
+            EmailDetails emailDetails = new EmailDetails();
+            emailDetails.Emails = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) &&
+                                                 (e.From.ToUpper().Contains(searchW) ||
+                                                 e.ReceiversEmail.Any(r => r.EmailAddress.ToUpper().Contains(searchW)) ||
+                                                 e.Subject.ToUpper().Contains(searchW) ||
+                                                 e.Message.ToUpper().Contains(searchW))).ToArray();
+            emailDetails.TotalMessages = emailDetails.Emails.Count();
+            emailDetails.InboxNewMessages = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && !e.IsRead && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).Count();
+
+            return emailDetails;
+        }
+
         public void SetAsRead(Guid emailID)
         {
             var email = webMailDBContext.Emails.First(e => e.ID == emailID);

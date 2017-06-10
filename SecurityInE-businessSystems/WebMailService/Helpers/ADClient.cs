@@ -32,6 +32,15 @@ namespace WebMailService.Helpers
                   async () => await GetTokenForApplication());
         }
 
+        public Model.User GetLoggedClient()
+        {
+            return new Model.User()
+            {
+                ID = Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value),
+                Email = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value
+            };
+        }
+
         public async Task<Guid> GetReceiverIDbyEmail(string receiverEmail)
         {
             try
