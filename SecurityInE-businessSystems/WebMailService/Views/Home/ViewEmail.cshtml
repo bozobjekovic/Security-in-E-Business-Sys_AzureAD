@@ -1,7 +1,7 @@
 ﻿@model WebMailService.Models.EmailViewModel
 
 @{
-    ViewBag.Title = "Trash";
+    ViewBag.Title = "ViewEmail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -30,22 +30,14 @@
         <div class="col-sm-9 col-md-10">
             <!-- Split button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default no_border">
-                    <div class="checkbox" style="margin: 0;">
-                        <label>
-                            <input type="checkbox"><span>All</span>
-                        </label>
-                    </div>
-                </button>
+                <a href="/Home/MoveToTrahs?emailID=@Model.Email.ID&selectedLabel=@Model.SelectedLabel" role="button" class="btn btn-default no_border" data-toggle="tooltip" title="Delete" style="width: 77px; padding-left: 25px;">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
             </div>
             <button type="button" class="btn btn-default no_border" data-toggle="tooltip" title="Refresh" style="width: 77px; padding-left: 25px;" onclick="refreshPage()">
                 <span class="glyphicon glyphicon-refresh"></span>
             </button>
             <script> function refreshPage() { window.location.reload(); } </script>
-            <!-- Single button -->
-            <div class="pull-right" style="margin-top: 7px;">
-                <span class="text-muted"><b>Total emails: </b><b>@Model.TotalMessages</b></span>
-            </div>
         </div>
     </div>
     <hr />
@@ -72,6 +64,6 @@
                 </li>
             </ul>
         </div>
-        @Html.Partial("_EmailsPartial", Model)
+        @Html.Partial("_EmailDetailsPartial", Model.Email)
     </div>
 </div>

@@ -29,6 +29,15 @@ namespace WebMailService.Repository.DB
             webMailDBContext.SaveChanges();
         }
 
+        public EmailDetails GetEmailDetails(User user, Guid emailID)
+        {
+            EmailDetails emailDetails = new EmailDetails();
+            emailDetails.Email = webMailDBContext.Emails.First(e => e.ID.Equals(emailID));
+            emailDetails.InboxNewMessages = webMailDBContext.Emails.Where(e => e.BelongsTo.Equals(user.ID) && !e.IsDeleted && !e.IsRead && e.ReceiversEmail.Any(r => r.EmailAddress.Equals(user.Email))).Count();
+
+            return emailDetails;
+        }
+
         public EmailDetails GetInbox(User user)
         {
             EmailDetails emailDetails = new EmailDetails();
@@ -65,6 +74,13 @@ namespace WebMailService.Repository.DB
             email.IsDeleted = true;
             webMailDBContext.SaveChanges();
             return email;
+        }
+
+        public void SetAsRead(Guid emailID)
+        {
+            var email = webMailDBContext.Emails.First(e => e.ID == emailID);
+            email.IsRead = true;
+            webMailDBContext.SaveChanges();
         }
     }
 }

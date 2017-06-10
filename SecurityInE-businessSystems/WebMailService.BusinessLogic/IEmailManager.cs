@@ -11,6 +11,7 @@ namespace WebMailService.BusinessLogic
     public interface IEmailManager
     {
         void ComposeEmail(Email email, List<Guid> senderAndReceiversIDs);
+        EmailDetails GetEmailDetails(User user, Guid emailID);
         EmailDetails GetInbox(User user);
         EmailDetails GetSent(User user);
         EmailDetails GetTrash(User user);

@@ -20,7 +20,7 @@ namespace WebMailService.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private enum TypeEmailDetails { Inbox, Sent, Trash }
+        private enum TypeEmailDetails { Inbox, Sent, Trash, EmailDetails }
 
         private ADClient adClient = new ADClient();
         private IEmailManager emailManager = new EmailManager();
@@ -44,7 +44,7 @@ namespace WebMailService.Controllers
             return View(emailVM);
         }
 
-        // GET: Email/Trash
+        // GET: Home/Trash
         public ActionResult Trash()
         {
             EmailDetails emailDetails = GetEmailDetailsForUser(TypeEmailDetails.Trash);
@@ -53,7 +53,24 @@ namespace WebMailService.Controllers
             return View(emailVM);
         }
 
-        // GET: Email/Compose
+        // GET: Home/ViewEmail
+        public ActionResult ViewEmail(Guid emailID, string selectedLabel)
+        {
+            EmailDetails emailDetails = GetEmailDetailsForUser(TypeEmailDetails.EmailDetails, emailID);
+            EmailViewModel emailVM = new EmailViewModel(selectedLabel, emailDetails);
+
+            return View(emailVM);
+        }
+
+        // GET: Home/MoveToTrash
+        public ActionResult MoveToTrahs(Guid emailID, string selectedLabel)
+        {
+            emailManager.MoveToTrash(emailID);
+
+            return selectedLabel.Equals("Inbox") ? RedirectToAction("Index") : RedirectToAction("Sent");
+        }
+
+        // POST: Home/Compose
         [HttpPost]
         public async Task<ActionResult> Compose(ComposeEmail composeEmail)
         {
@@ -97,7 +114,7 @@ namespace WebMailService.Controllers
         }
 
         [NonAction]
-        private EmailDetails GetEmailDetailsForUser(TypeEmailDetails type)
+        private EmailDetails GetEmailDetailsForUser(TypeEmailDetails type, Guid emailID = new Guid())
         {
             Model.User user = new Model.User()
             {
@@ -113,6 +130,8 @@ namespace WebMailService.Controllers
                     return emailManager.GetSent(user);
                 case TypeEmailDetails.Trash:
                     return emailManager.GetTrash(user);
+                case TypeEmailDetails.EmailDetails:
+                    return emailManager.GetEmailDetails(user, emailID);
                 default:
                     return null;
             }

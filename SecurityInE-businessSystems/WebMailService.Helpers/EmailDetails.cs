@@ -12,5 +12,6 @@ namespace WebMailService.Helpers
         public ICollection<Email> Emails { get; set; }
         public int InboxNewMessages { get; set; }
         public int TotalMessages { get; set; }
+        public Email Email { get; set; }
     }
 }

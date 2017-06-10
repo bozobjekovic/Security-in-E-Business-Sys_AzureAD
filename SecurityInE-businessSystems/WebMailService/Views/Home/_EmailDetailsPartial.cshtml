@@ -1,0 +1,46 @@
+﻿@model WebMailService.Model.Email
+
+<style>
+    #home { background-color: white; padding: 10px; border: 1px solid #cccccc; }
+    .subject { font-size: 20px; font-weight: bold; }
+</style>
+
+<div class="col-sm-9 col-md-10">
+    <div class="tab-pane fade in active" id="home">
+        <span class="subject">@Model.Subject</span>
+        <hr style="border-top: 1px solid #cccccc;" />
+        <div style="display: inline-block;">
+            <span style="font-size: 13px;"><b>@Model.From</b></span><br />
+            <span class="text-muted" style="font-size: 11px;">
+                to
+                @foreach (var receiverEmail in Model.ReceiversEmail)
+                {
+                    if (receiverEmail.ReceiverExists)
+                    {
+                        <span>@receiverEmail.EmailAddress, </span>
+                    }
+                    else
+                    {
+                        <span><del>@receiverEmail.EmailAddress, </del></span>
+                    }
+                }
+            </span>
+        </div>
+        <span class="badge" style="float: right;">@Model.Date.ToString("dd/MMM/yy hh:mm tt")</span>
+        <div style="margin-top: 20px;">
+            <span>@Model.Message</span>
+        </div>
+        <hr style="border-top: 1px solid #cccccc; margin-bottom: 5px;" />
+        <div>
+            @foreach (var receiverEmail in Model.ReceiversEmail)
+            {
+                if (!receiverEmail.ReceiverExists)
+                {
+                    <span class="text-muted" style="font-size: 11px;">
+                        ERROR: Your message is not sent to <b>'@receiverEmail.EmailAddress'</b>, because the user doesn't exists in AD.
+                    </span>
+                }
+            }
+        </div>
+    </div>
+</div>

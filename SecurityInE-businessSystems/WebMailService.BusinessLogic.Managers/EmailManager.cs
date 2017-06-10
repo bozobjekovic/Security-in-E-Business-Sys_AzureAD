@@ -32,6 +32,12 @@ namespace WebMailService.BusinessLogic.Managers
             emailDBRepository.DeleteEmail(emailID);
         }
 
+        public EmailDetails GetEmailDetails(User user, Guid emailID)
+        {
+            emailDBRepository.SetAsRead(emailID);
+            return emailDBRepository.GetEmailDetails(user, emailID);
+        }
+
         public EmailDetails GetInbox(User user)
         {
             return emailDBRepository.GetInbox(user);

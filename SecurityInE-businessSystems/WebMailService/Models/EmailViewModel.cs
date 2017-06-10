@@ -12,6 +12,7 @@ namespace WebMailService.Models
         public string SelectedLabel { get; set; }
         public int InboxNewMessages { get; set; }
         public int TotalMessages { get; set; }
+        public Email Email { get; set; }
         public ICollection<Email> Emails { get; set; }
 
         public EmailViewModel()
@@ -33,22 +34,8 @@ namespace WebMailService.Models
             InboxNewMessages = emailDetails.InboxNewMessages;
             TotalMessages = emailDetails.TotalMessages;
             Emails = emailDetails.Emails;
+            Email = emailDetails.Email;
         }
 
-        public EmailViewModel(int inboxNewMessages, int totalMessages, ICollection<Email> emails)
-        {
-            SelectedLabel = "Inbox";
-            InboxNewMessages = inboxNewMessages;
-            TotalMessages = totalMessages;
-            Emails = emails;
-        }
-
-        public EmailViewModel(string selectedLabel, int inboxNewMessages, int totalMessages, ICollection<Email> emails)
-        {
-            SelectedLabel = selectedLabel;
-            InboxNewMessages = inboxNewMessages;
-            TotalMessages = totalMessages;
-            Emails = emails;
-        }
     }
 }

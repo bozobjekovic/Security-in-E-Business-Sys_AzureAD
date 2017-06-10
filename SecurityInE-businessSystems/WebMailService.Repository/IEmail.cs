@@ -11,21 +11,12 @@ namespace WebMailService.Repository
     public interface IEmail
     {
         void ComposeEmail(List<Email> emailsToDB);
+        EmailDetails GetEmailDetails(User user, Guid emailID);
         EmailDetails GetInbox(User user);
         EmailDetails GetSent(User user);
         EmailDetails GetTrash(User user);
         Email MoveToTrash(Guid emailID);
         void DeleteEmail(Guid emailID);
+        void SetAsRead(Guid emailID);
     }
 }
-
-/*
- * Methods:
-    + composeMail()         ++
-    + getInboxMails()       ++
-    + getSentMails()        ++
-    + getTrashMails()       ++
-    + moveToTrashMail()     ++
-    + deleteMail()          ++
-    + searchMails()         
-*/
