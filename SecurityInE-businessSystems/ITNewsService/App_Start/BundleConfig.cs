@@ -15,9 +15,14 @@ namespace ITNewsService
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.min.js"));
 
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap1").Include(
+                      "~/Content/bootstrap1.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/CustomCss.css"));
         }
     }
 }
