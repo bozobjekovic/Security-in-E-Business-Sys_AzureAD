@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMailService.BusinessLogi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMailService.Helpers", "WebMailService.Helpers\WebMailService.Helpers.csproj", "{65A61053-983F-4764-9AD6-FE87E94FABD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService", "ITNewsService\ITNewsService.csproj", "{B1B1A00B-56C7-4B71-8603-26346F62C32D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{65A61053-983F-4764-9AD6-FE87E94FABD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65A61053-983F-4764-9AD6-FE87E94FABD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65A61053-983F-4764-9AD6-FE87E94FABD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
