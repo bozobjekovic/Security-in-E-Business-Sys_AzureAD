@@ -23,6 +23,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMailService.Helpers", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService", "ITNewsService\ITNewsService.csproj", "{B1B1A00B-56C7-4B71-8603-26346F62C32D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService.Model", "ITNewsService.Model\ITNewsService.Model.csproj", "{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService.Context", "ITNewsService.Context\ITNewsService.Context.csproj", "{9CFCFD00-0C33-4A60-B092-CB7A0CE5927B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService.Repository", "ITNewsService.Repository\ITNewsService.Repository.csproj", "{906266ED-17C6-4167-8B88-939E2405FD0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService.Repository.DB", "ITNewsService.Repository.DB\ITNewsService.Repository.DB.csproj", "{28DD111F-1515-4CD7-9B86-D5EE9EA3FA58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITNewsService.ConsoleApp", "ITNewsService.ConsoleApp\ITNewsService.ConsoleApp.csproj", "{87DBC12B-25BE-445C-8E5B-1A9B7EA42A84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +79,26 @@ Global
 		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1B1A00B-56C7-4B71-8603-26346F62C32D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CFCFD00-0C33-4A60-B092-CB7A0CE5927B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CFCFD00-0C33-4A60-B092-CB7A0CE5927B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CFCFD00-0C33-4A60-B092-CB7A0CE5927B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CFCFD00-0C33-4A60-B092-CB7A0CE5927B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{906266ED-17C6-4167-8B88-939E2405FD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{906266ED-17C6-4167-8B88-939E2405FD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{906266ED-17C6-4167-8B88-939E2405FD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{906266ED-17C6-4167-8B88-939E2405FD0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28DD111F-1515-4CD7-9B86-D5EE9EA3FA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28DD111F-1515-4CD7-9B86-D5EE9EA3FA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28DD111F-1515-4CD7-9B86-D5EE9EA3FA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28DD111F-1515-4CD7-9B86-D5EE9EA3FA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DBC12B-25BE-445C-8E5B-1A9B7EA42A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DBC12B-25BE-445C-8E5B-1A9B7EA42A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DBC12B-25BE-445C-8E5B-1A9B7EA42A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DBC12B-25BE-445C-8E5B-1A9B7EA42A84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
