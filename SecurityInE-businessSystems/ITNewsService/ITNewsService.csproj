@@ -201,6 +201,8 @@
     </Compile>
     <Compile Include="Models\AdalTokenCache.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\NewsDetailsViewModel.cs" />
+    <Compile Include="Models\NewsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -250,6 +252,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITNewsService.BusinessLogic.Managers\ITNewsService.BusinessLogic.Managers.csproj">
+      <Project>{3CC7B4E5-E36C-441C-8271-E8CEEBA8CE84}</Project>
+      <Name>ITNewsService.BusinessLogic.Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITNewsService.BusinessLogic\ITNewsService.BusinessLogic.csproj">
+      <Project>{2AC622D2-2074-4A62-BD65-7DE3746640F7}</Project>
+      <Name>ITNewsService.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITNewsService.Model\ITNewsService.Model.csproj">
+      <Project>{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}</Project>
+      <Name>ITNewsService.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

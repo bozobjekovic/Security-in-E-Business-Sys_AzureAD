@@ -14,7 +14,7 @@ namespace ITNewsService.Repository.DB
 
         public ICollection<News> GetAllNews()
         {
-            return itNewsDBContext.News.ToList();
+            return itNewsDBContext.News.OrderByDescending(n => n.Date).ToList();
         }
 
         public News GetNewsDetails(Guid newsId)
