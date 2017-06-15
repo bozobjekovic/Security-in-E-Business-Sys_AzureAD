@@ -19,7 +19,7 @@ namespace ITNewsService.Model
         [NotMapped]
         public HttpPostedFileBase File { get; set; }
 
-        [Required]
-        public News News { get; set; }
+        //[Required]
+        //public virtual News News { get; set; }
     }
 }

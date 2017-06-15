@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{906266ED-17C6-4167-8B88-939E2405FD0F}</ProjectGuid>
+    <ProjectGuid>{3CC7B4E5-E36C-441C-8271-E8CEEBA8CE84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ITNewsService.Repository</RootNamespace>
-    <AssemblyName>ITNewsService.Repository</AssemblyName>
+    <RootNamespace>ITNewsService.BusinessLogic.Managers</RootNamespace>
+    <AssemblyName>ITNewsService.BusinessLogic.Managers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INews.cs" />
+    <Compile Include="NewsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ITNewsService.BusinessLogic\ITNewsService.BusinessLogic.csproj">
+      <Project>{2ac622d2-2074-4a62-bd65-7de3746640f7}</Project>
+      <Name>ITNewsService.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITNewsService.Model\ITNewsService.Model.csproj">
       <Project>{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}</Project>
       <Name>ITNewsService.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITNewsService.Repository.DB\ITNewsService.Repository.DB.csproj">
+      <Project>{28DD111F-1515-4CD7-9B86-D5EE9EA3FA58}</Project>
+      <Name>ITNewsService.Repository.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITNewsService.Repository\ITNewsService.Repository.csproj">
+      <Project>{906266ED-17C6-4167-8B88-939E2405FD0F}</Project>
+      <Name>ITNewsService.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

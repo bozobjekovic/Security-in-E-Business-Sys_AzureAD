@@ -22,6 +22,9 @@ namespace ITNewsService.ConsoleApp
                 Content = "Helloo message",
                 Date = DateTime.Now,
                 Publisher = new Guid(),
+                Image = new Image() {
+                    Name = "Slika 1", Size = 50
+                },
                 Comments = new List<Comment>() {
                     new Comment() { Text = "TesxtCom1", Date = DateTime.Now.AddDays(2), Publisher = new Guid() }
                 }

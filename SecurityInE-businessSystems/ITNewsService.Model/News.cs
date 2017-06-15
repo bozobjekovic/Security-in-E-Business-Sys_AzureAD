@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace ITNewsService.Model
         public string Content { get; set; }
         public Guid Publisher { get; set; }
 
-        public Image Image { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public virtual Image Image { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

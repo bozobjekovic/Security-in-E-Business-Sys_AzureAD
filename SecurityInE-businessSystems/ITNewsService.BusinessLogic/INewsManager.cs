@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITNewsService.Repository
+namespace ITNewsService.BusinessLogic
 {
-    public interface INews
+    public interface INewsManager
     {
         ICollection<News> GetAllNews();
         News GetNewsDetails(Guid newsId);
