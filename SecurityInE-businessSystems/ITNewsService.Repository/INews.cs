@@ -11,5 +11,6 @@ namespace ITNewsService.Repository
     {
         ICollection<News> GetAllNews();
         News GetNewsDetails(Guid newsId);
+        void AddNews(News news);
     }
 }

@@ -11,5 +11,6 @@ namespace ITNewsService.BusinessLogic
     {
         ICollection<News> GetAllNews();
         News GetNewsDetails(Guid newsId);
+        void AddNews(News news);
     }
 }

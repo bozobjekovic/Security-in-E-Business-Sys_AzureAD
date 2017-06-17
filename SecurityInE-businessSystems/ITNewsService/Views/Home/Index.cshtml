@@ -24,9 +24,10 @@
 </div>
 <div class="container" style="margin-top: 50px;">
     <div class="row-fluid">
-        <div class="span2" style="margin-top: 10px; text-align: center;">
-            <a href="/home/index" style="background-color: #d2322d; color: #ffffff; padding: 10px 30%;">All News</a>
-            <hr />
+        <div class="span2" style="text-align: center;">
+            <a href="/home/index" class="btn btn-danger btn-sm btn-block no_border">All News</a>
+            <hr style="margin-top: 5px; margin-bottom: 10px;"/>
+            @Html.Partial("AddNewsPartial")
         </div>
         <div class="span10">
             <div class="row-fluid">
@@ -38,7 +39,17 @@
                                 <div class="general-posts">
                                     <div class="user-info">
                                         <h1>@Model.News.ElementAt(i).Title</h1>
-                                        <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                        @if (Model.News.ElementAt(i).Image != null)
+                                        {
+                                            if (Model.News.ElementAt(i).Image.Name.Equals("Default"))
+                                            {
+                                                <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                            }
+                                            else
+                                            {
+                                                /* TODO */
+                                            }
+                                        }
                                         <p class="no-space">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
                                     </div>
                                     <div class="read-more">
@@ -48,34 +59,6 @@
                             </div>
                         </div>
                     }
-                    @*<div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>Praesent dapibus lipsumneque id cursus faucio doloribus tortor neque tiinousegetas augue</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="no-space">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>cursus faucio</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="last">Phasellus ultrices nulla </p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
                 </div>
                 <div class="span3">
                     @for (int i = 1; i < Model.News.Count; i += 4)
@@ -85,7 +68,17 @@
                                 <div class="general-posts">
                                     <div class="user-info">
                                         <h1>@Model.News.ElementAt(i).Title</h1>
-                                        <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                        @if (Model.News.ElementAt(i).Image != null)
+                                        {
+                                            if (Model.News.ElementAt(i).Image.Name.Equals("Default"))
+                                            {
+                                                <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                            }
+                                            else
+                                            {
+                                                /* TODO */
+                                            }
+                                        }
                                         <p class="no-space">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
                                     </div>
                                     <div class="read-more">
@@ -95,34 +88,6 @@
                             </div>
                         </div>
                     }
-                    @*<div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>Integer vitae libero ac risus egestas risus egestas placerat</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="last">Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel ipsum dolor.</p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>Integer vitae libero risus egestas placerat risus </h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="last">Sed adipiscing ornare risus. Morbi est est, blandit sit amet</p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
                 </div>
                 <div class="span3">
                     @for (int i = 2; i < Model.News.Count; i += 4)
@@ -132,7 +97,17 @@
                                 <div class="general-posts">
                                     <div class="user-info">
                                         <h1>@Model.News.ElementAt(i).Title</h1>
-                                        <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                        @if (Model.News.ElementAt(i).Image != null)
+                                        {
+                                            if (Model.News.ElementAt(i).Image.Name.Equals("Default"))
+                                            {
+                                                <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                            }
+                                            else
+                                            {
+                                                /* TODO */
+                                            }
+                                        }
                                         <p class="no-space">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
                                     </div>
                                     <div class="read-more">
@@ -142,35 +117,6 @@
                             </div>
                         </div>
                     }
-                    @*<div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>Integer vitae libero ac risus egestas modo felis quis</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet,</p>
-                                    <p class="last">Pulvinar risus, vitae facilis onec nec justo eget felis facilisis fermentum.</p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>Lorem ipsum dolor</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="last">Pellentesque odio nisi, euismod in, pharetra a, ultricies in.</p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
                 </div>
                 <div class="span3">
                     @for (int i = 3; i < Model.News.Count; i += 4)
@@ -180,7 +126,17 @@
                                 <div class="general-posts">
                                     <div class="user-info">
                                         <h1>@Model.News.ElementAt(i).Title</h1>
-                                        <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                        @if (Model.News.ElementAt(i).Image != null)
+                                        {
+                                            if (Model.News.ElementAt(i).Image.Name.Equals("Default"))
+                                            {
+                                                <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                            }
+                                            else
+                                            {
+                                                /* TODO */
+                                            }
+                                        }
                                         <p class="no-space">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
                                     </div>
                                     <div class="read-more">
@@ -190,34 +146,6 @@
                             </div>
                         </div>
                     }
-                    @*<div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>Praesent dapibus lipsumneque id cursus faucio doloribus tortor neque tiinousegetas augue</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="no-space">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="general-posts">
-                                <div class="user-info">
-                                    <h1>cursus faucio</h1>
-                                    <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
-                                    <p class="last">Phasellus ultrices nulla </p>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#">read more <i class="fw-icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
                 </div>
             </div>
         </div>

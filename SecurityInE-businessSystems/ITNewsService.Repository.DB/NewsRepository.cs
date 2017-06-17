@@ -12,6 +12,12 @@ namespace ITNewsService.Repository.DB
     {
         private ITNewsDBContext itNewsDBContext = new ITNewsDBContext();
 
+        public void AddNews(News news)
+        {
+            itNewsDBContext.News.Add(news);
+            itNewsDBContext.SaveChanges();
+        }
+
         public ICollection<News> GetAllNews()
         {
             return itNewsDBContext.News.OrderByDescending(n => n.Date).ToList();

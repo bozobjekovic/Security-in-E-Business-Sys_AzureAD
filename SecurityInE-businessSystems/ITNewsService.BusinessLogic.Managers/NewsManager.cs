@@ -13,6 +13,11 @@ namespace ITNewsService.BusinessLogic.Managers
     {
         private INews newsDBRepository = new NewsRepository();
 
+        public void AddNews(News news)
+        {
+            newsDBRepository.AddNews(news);
+        }
+
         public ICollection<News> GetAllNews()
         {
             return newsDBRepository.GetAllNews();
