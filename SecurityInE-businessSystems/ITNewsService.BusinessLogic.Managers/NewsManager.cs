@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ITNewsService.Model;
 using ITNewsService.Repository;
 using ITNewsService.Repository.DB;
+using ITNewsService.Helpers;
 
 namespace ITNewsService.BusinessLogic.Managers
 {
@@ -23,7 +24,7 @@ namespace ITNewsService.BusinessLogic.Managers
             return newsDBRepository.GetAllNews();
         }
 
-        public News GetNewsDetails(Guid newsId)
+        public NewsDetails GetNewsDetails(Guid newsId)
         {
             return newsDBRepository.GetNewsDetails(newsId);
         }

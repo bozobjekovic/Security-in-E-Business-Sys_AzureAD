@@ -1,4 +1,5 @@
 ﻿using ITNewsService.Model;
+using ITNewsService.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ITNewsService.Repository
     public interface INews
     {
         ICollection<News> GetAllNews();
-        News GetNewsDetails(Guid newsId);
+        NewsDetails GetNewsDetails(Guid newsId);
         void AddNews(News news);
     }
 }

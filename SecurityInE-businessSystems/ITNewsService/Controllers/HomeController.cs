@@ -45,6 +45,16 @@ namespace ITNewsService.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Home/NewsDetails
+        [AllowAnonymous]
+        public ActionResult NewsDetails(Guid id)
+        {
+            NewsDetails newsDetails = newsManager.GetNewsDetails(id);
+            NewsViewModel newsVM = new NewsViewModel(newsDetails);
+
+            return View(newsVM);
+        }
+
         private Image GetNewsImage(string imageOption)
         {
             Image image = null;

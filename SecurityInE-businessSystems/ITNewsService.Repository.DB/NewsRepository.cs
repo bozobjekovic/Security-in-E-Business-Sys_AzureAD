@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ITNewsService.Helpers;
 
 namespace ITNewsService.Repository.DB
 {
@@ -23,9 +24,13 @@ namespace ITNewsService.Repository.DB
             return itNewsDBContext.News.OrderByDescending(n => n.Date).ToList();
         }
 
-        public News GetNewsDetails(Guid newsId)
+        public NewsDetails GetNewsDetails(Guid newsId)
         {
-            return itNewsDBContext.News.First(n => n.ID.Equals(newsId));
+            NewsDetails newsDetails = new NewsDetails();
+            newsDetails.News = itNewsDBContext.News.First(n => n.ID.Equals(newsId));
+            newsDetails.NumberOfComments = newsDetails.News.Comments.Count;
+
+            return newsDetails;
         }
     }
 }

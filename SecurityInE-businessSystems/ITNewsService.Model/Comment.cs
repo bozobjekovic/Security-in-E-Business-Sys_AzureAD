@@ -15,6 +15,7 @@ namespace ITNewsService.Model
         public string Text { get; set; }
         public DateTime Date { get; set; }
         public Guid Publisher { get; set; }
+        public string PublisherName { get; set; }
 
         [Required]
         public News News { get; set; }

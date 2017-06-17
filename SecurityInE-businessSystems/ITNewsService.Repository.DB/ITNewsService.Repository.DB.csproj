@@ -55,6 +55,10 @@
       <Project>{9CFCFD00-0C33-4A60-B092-CB7A0CE5927B}</Project>
       <Name>ITNewsService.Context</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ITNewsService.Helpers\ITNewsService.Helpers.csproj">
+      <Project>{d49a6cb6-d5d1-40b2-9077-babbf3129dff}</Project>
+      <Name>ITNewsService.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITNewsService.Model\ITNewsService.Model.csproj">
       <Project>{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}</Project>
       <Name>ITNewsService.Model</Name>

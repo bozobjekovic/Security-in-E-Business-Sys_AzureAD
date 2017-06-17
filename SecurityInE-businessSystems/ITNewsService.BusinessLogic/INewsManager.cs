@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ITNewsService.Helpers;
 
 namespace ITNewsService.BusinessLogic
 {
     public interface INewsManager
     {
         ICollection<News> GetAllNews();
-        News GetNewsDetails(Guid newsId);
+        NewsDetails GetNewsDetails(Guid newsId);
         void AddNews(News news);
     }
 }

@@ -200,6 +200,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\NewNews.cs" />
+    <Compile Include="Helpers\UserDetails.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\NewsDetailsViewModel.cs" />
@@ -212,6 +213,7 @@
     <Content Include="Content\bootstrap1.css" />
     <Content Include="Content\CustomCss.css" />
     <Content Include="Content\img\dfImage.png" />
+    <Content Include="Content\img\profile.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -263,6 +265,10 @@
       <Project>{2AC622D2-2074-4A62-BD65-7DE3746640F7}</Project>
       <Name>ITNewsService.BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ITNewsService.Helpers\ITNewsService.Helpers.csproj">
+      <Project>{d49a6cb6-d5d1-40b2-9077-babbf3129dff}</Project>
+      <Name>ITNewsService.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITNewsService.Model\ITNewsService.Model.csproj">
       <Project>{8BF8AEA0-F6C3-4250-85D9-7E6F45D1A7CC}</Project>
       <Name>ITNewsService.Model</Name>
@@ -270,6 +276,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\AddNewsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\NewsDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\NewsCommentsPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
