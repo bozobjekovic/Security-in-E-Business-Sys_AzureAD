@@ -15,6 +15,7 @@ namespace ITNewsService.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private ICommentManager commentManager = new CommentManager();
         private INewsManager newsManager = new NewsManager();
 
         private string urlType_objectidentifier = "http://schemas.microsoft.com/identity/claims/objectidentifier";
@@ -38,7 +39,7 @@ namespace ITNewsService.Controllers
                 Date = DateTime.Now,
                 Content = newNews.Content,
                 Publisher = Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value),
-                Image = GetNewsImage(newNews.ImageOption)
+                Image = GetNewsImage(newNews.ImageOption, newNews.File)
             };
             newsManager.AddNews(news);
             
@@ -67,12 +68,21 @@ namespace ITNewsService.Controllers
                 Publisher = Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value),
                 PublisherName = ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value + " " + ClaimsPrincipal.Current.FindFirst(ClaimTypes.Surname).Value
             };
-            newsManager.AddComment(comment, newComment.NewsID);
+            commentManager.AddComment(comment, newComment.NewsID);
 
             return RedirectToAction("NewsDetails", new { id = newComment.NewsID });
         }
 
-        private Image GetNewsImage(string imageOption)
+        // POST: Home/DeleteComment
+        [HttpPost]
+        public ActionResult DeleteComment(DeleteComment deleteComment)
+        {
+            commentManager.DeleteComment(deleteComment.CommentID);
+
+            return RedirectToAction("NewsDetails", new { id = deleteComment.NewsID });
+        }
+
+        private Image GetNewsImage(string imageOption, HttpPostedFileBase file)
         {
             Image image = null;
 
@@ -86,7 +96,15 @@ namespace ITNewsService.Controllers
             }
             else
             {
-                return image;
+                byte[] data = new byte[file.ContentLength];
+                file.InputStream.Read(data, 0, file.ContentLength);
+
+                return new Image()
+                {
+                    Name = file.FileName,
+                    Size = file.ContentLength,
+                    Data = data
+                };
             }
         }
 

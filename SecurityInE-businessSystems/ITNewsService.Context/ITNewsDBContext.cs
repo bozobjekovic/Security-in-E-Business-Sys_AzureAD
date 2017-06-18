@@ -15,5 +15,6 @@ namespace ITNewsService.Context
         }
 
         public DbSet<News> News { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

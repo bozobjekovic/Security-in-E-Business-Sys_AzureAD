@@ -16,8 +16,6 @@ namespace ITNewsService.Model
         public int Size { get; set; }
         public string Name { get; set; }
         public byte[] Data { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase File { get; set; }
 
         //[Required]
         //public virtual News News { get; set; }

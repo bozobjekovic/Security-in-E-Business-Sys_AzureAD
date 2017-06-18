@@ -1,0 +1,43 @@
+﻿@model ITNewsService.Models.NewsViewModel
+
+<div class="row-fluid">
+    @for (int j = 0; j < 4; j++)
+    {
+        <div class="span3">
+            @for (int i = j; i < Model.News.Count; i += 4)
+            {
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="general-posts">
+                            <div class="user-info">
+                                <h1>@Model.News.ElementAt(i).Title</h1>
+                                @if (Model.News.ElementAt(i).Image != null)
+                                {
+                                    if (Model.News.ElementAt(i).Image.Name.Equals("Default"))
+                                    {
+                                        <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
+                                    }
+                                    else
+                                    {
+                                        <img src="data:image/png;base64, @Convert.ToBase64String(Model.News.ElementAt(i).Image.Data, 0, Model.News.ElementAt(i).Image.Size)" alt="" class="image-spacing">
+                                    }
+                                }
+                                @if (Model.News.ElementAt(i).Content.Length > 160)
+                                {
+                                    <p class="no-space">@Model.News.ElementAt(i).Content.Substring(0, new Random().Next(120, 155))</p>
+                                }
+                                else
+                                {
+                                    <p class="no-space">@Model.News.ElementAt(i).Content</p>
+                                }
+                            </div>
+                            <div class="read-more">
+                                <a href="/home/NewsDetails?id=@Model.News.ElementAt(i).ID">read more <i class="fw-icon-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -200,6 +200,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AddComment.cs" />
+    <Compile Include="Helpers\DeleteComment.cs" />
     <Compile Include="Helpers\NewNews.cs" />
     <Compile Include="Helpers\UserDetails.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />
@@ -283,6 +284,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\NewsCommentsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AllNewsPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

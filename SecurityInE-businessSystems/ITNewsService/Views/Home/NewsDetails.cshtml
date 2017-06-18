@@ -56,6 +56,10 @@
                         {
                             <img src="~/Content/img/dfImage.png" alt="" class="image-spacing">
                         }
+                        else
+                        {
+                            <img src="data:image/png;base64, @Convert.ToBase64String(Model.SelectedNews.Image.Data, 0, Model.SelectedNews.Image.Size)" alt="" class="image-spacing">
+                        }
                     }
                 </div>
                 <div style="margin-top: 50px;">

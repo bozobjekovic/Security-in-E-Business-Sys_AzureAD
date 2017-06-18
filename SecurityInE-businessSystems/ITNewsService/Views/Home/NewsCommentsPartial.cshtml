@@ -48,11 +48,15 @@
                             </div>
                             @if (Request.IsAuthenticated && comment.Publisher.Equals(UserDetails.GetUserID()))
                             {
-                                <div class="action">
-                                    <button type="button" class="btn btn-danger btn-xs no_border" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
+                                <form action="/home/DeleteComment" method="post">
+                                    <div class="action">
+                                        @Html.Hidden("NewsID", Model.SelectedNews.ID)
+                                        @Html.Hidden("CommentID", comment.ID)
+                                        <button type="submit" class="btn btn-danger btn-xs no_border" title="Delete">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </div>
+                                </form>
                             }
                         </div>
                     </div>

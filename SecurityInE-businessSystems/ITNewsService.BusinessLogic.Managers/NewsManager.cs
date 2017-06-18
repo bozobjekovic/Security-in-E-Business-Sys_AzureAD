@@ -14,13 +14,6 @@ namespace ITNewsService.BusinessLogic.Managers
     {
         private INews newsDBRepository = new NewsRepository();
 
-        public void AddComment(Comment comment, Guid newsID)
-        {
-            News news = newsDBRepository.GetNews(newsID);
-            news.Comments.Add(comment);
-            newsDBRepository.AddCommentOnNews(news);
-        }
-
         public void AddNews(News news)
         {
             newsDBRepository.AddNews(news);
