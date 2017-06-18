@@ -1,6 +1,24 @@
-﻿@model ITNewsService.Models.NewsViewModel
+﻿@using ITNewsService.Helpers
+@model ITNewsService.Models.NewsViewModel
 
 <div class="panel widget">
+    @if (User.IsInRole("admin") || User.IsInRole("user"))
+    {
+        <div>
+            <form action="/home/Comment" method="post">
+                <div class="form-group">
+                    <label class="col-sm-12" for="inputBody">Leave comment</label>
+                    @Html.Hidden("NewsID", Model.SelectedNews.ID)
+                    <div class="col-sm-12"><textarea name="Text" class="form-control no_border no_max_width" id="inputBody" style="resize: vertical" rows="2"></textarea></div>
+                    <div class="col-sm-12" style="margin-top: 10px; margin-bottom: 40px;">
+                        <button type="submit" class="btn btn-danger no_border" title="Delete" style="float: right; padding: 5px 40px;">
+                            <span class="glyphicon glyphicon-comment"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
     <div class="panel-heading">
         <span class="glyphicon glyphicon-comment"></span>
         <h3 class="panel-title text-muted">
@@ -12,74 +30,34 @@
     </div>
     <div class="panel-body">
         <ul class="list-group">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-2 col-md-1">
-                        <img src="~/Content/img/profile.png" class="img-circle img-responsive" alt="" />
-                    </div>
-                    <div class="col-xs-10 col-md-11">
-                        <div>
-                            <div class="mic-info">
-                                By: <b>Bhaumik Patel</b> on 2 Aug 2013
+            @foreach (var comment in Model.SelectedNews.Comments)
+            {
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-1">
+                            <img src="~/Content/img/profile.png" class="img-circle img-responsive" alt="" />
+                        </div>
+                        <div class="col-xs-10 col-md-11">
+                            <div>
+                                <div class="mic-info">
+                                    By: <b>@comment.PublisherName</b> on @comment.Date.ToString("dd MMM yyyy")
+                                </div>
                             </div>
-                        </div>
-                        <div class="comment-text">
-                            Awesome design
-                        </div>
-                        <div class="action">
-                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-2 col-md-1">
-                        <img src="~/Content/img/profile.png" class="img-circle img-responsive" alt="" />
-                    </div>
-                    <div class="col-xs-10 col-md-11">
-                        <div>
-                            <div class="mic-info">
-                                By: <b>Bhaumik Patel</b> on 11 Nov 2013
+                            <div class="comment-text">
+                                @comment.Text
                             </div>
-                        </div>
-                        <div class="comment-text">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                        </div>
-                        <div class="action">
-                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-2 col-md-1">
-                        <img src="~/Content/img/profile.png" class="img-circle img-responsive" alt="" />
-                    </div>
-                    <div class="col-xs-10 col-md-11">
-                        <div>
-                            <div class="mic-info">
-                                By: <b>Bhaumik Patel</b> on 11 Nov 2013
-                            </div>
-                        </div>
-                        <div class="comment-text">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                        </div>
-                        <div class="action">
-                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
+                            @if (Request.IsAuthenticated && comment.Publisher.Equals(UserDetails.GetUserID()))
+                            {
+                                <div class="action">
+                                    <button type="button" class="btn btn-danger btn-xs no_border" title="Delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            }
                         </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            }
         </ul>
     </div>
 </div>

@@ -13,6 +13,12 @@ namespace ITNewsService.Repository.DB
     {
         private ITNewsDBContext itNewsDBContext = new ITNewsDBContext();
 
+        public void AddCommentOnNews(News changedNews)
+        {
+            itNewsDBContext.Entry(changedNews).State = System.Data.Entity.EntityState.Modified;
+            itNewsDBContext.SaveChanges();
+        }
+
         public void AddNews(News news)
         {
             itNewsDBContext.News.Add(news);
@@ -22,6 +28,11 @@ namespace ITNewsService.Repository.DB
         public ICollection<News> GetAllNews()
         {
             return itNewsDBContext.News.OrderByDescending(n => n.Date).ToList();
+        }
+
+        public News GetNews(Guid newsId)
+        {
+            return itNewsDBContext.News.First(n => n.ID.Equals(newsId));
         }
 
         public NewsDetails GetNewsDetails(Guid newsId)

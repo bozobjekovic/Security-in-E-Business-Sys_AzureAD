@@ -40,6 +40,7 @@ namespace ITNewsService
                         // instead of using the default validation (validating against a single issuer value, as we do in line of business apps), 
                         // we inject our own multitenant validation logic
                         ValidateIssuer = false,
+                        RoleClaimType = "roles"
                     },
                     Notifications = new OpenIdConnectAuthenticationNotifications()
                     {

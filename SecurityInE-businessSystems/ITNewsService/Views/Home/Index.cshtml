@@ -27,7 +27,10 @@
         <div class="span2" style="text-align: center;">
             <a href="/home/index" class="btn btn-danger btn-sm btn-block no_border">All News</a>
             <hr style="margin-top: 5px; margin-bottom: 10px;"/>
-            @Html.Partial("AddNewsPartial")
+            @if (User.IsInRole("admin"))
+            {
+                @Html.Partial("AddNewsPartial")
+            }
         </div>
         <div class="span10">
             <div class="row-fluid">

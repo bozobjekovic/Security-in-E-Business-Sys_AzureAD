@@ -8,18 +8,16 @@ namespace ITNewsService.Helpers
 {
     public static class UserDetails
     {
+        private static string urlType_objectidentifier = "http://schemas.microsoft.com/identity/claims/objectidentifier";
+
         public static string GetUserDetails()
         {
-            ClaimsPrincipal cp = ClaimsPrincipal.Current;
+            return string.Format("Hello {0} {1}", ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value, ClaimsPrincipal.Current.FindFirst(ClaimTypes.Surname).Value);
+        }
 
-            if (cp != null)
-            {
-                return string.Format("Hello {0} {1}", cp.FindFirst(ClaimTypes.GivenName).Value, cp.FindFirst(ClaimTypes.Surname).Value);
-            }
-            else
-            {
-                return "";
-            }
+        public static Guid GetUserID()
+        {
+            return Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value);
         }
     }
 }

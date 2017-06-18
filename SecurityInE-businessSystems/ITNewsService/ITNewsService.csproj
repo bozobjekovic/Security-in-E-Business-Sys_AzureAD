@@ -199,6 +199,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AddComment.cs" />
     <Compile Include="Helpers\NewNews.cs" />
     <Compile Include="Helpers\UserDetails.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />

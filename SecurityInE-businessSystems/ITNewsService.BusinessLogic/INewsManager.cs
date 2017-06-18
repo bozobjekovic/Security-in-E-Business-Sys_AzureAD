@@ -13,5 +13,6 @@ namespace ITNewsService.BusinessLogic
         ICollection<News> GetAllNews();
         NewsDetails GetNewsDetails(Guid newsId);
         void AddNews(News news);
+        void AddComment(Comment comment, Guid newsID);
     }
 }

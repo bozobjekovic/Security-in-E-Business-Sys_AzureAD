@@ -50,9 +50,26 @@ namespace ITNewsService.Controllers
         public ActionResult NewsDetails(Guid id)
         {
             NewsDetails newsDetails = newsManager.GetNewsDetails(id);
+            newsDetails.News.Comments = newsDetails.News.Comments.OrderByDescending(c => c.Date).ToList(); 
             NewsViewModel newsVM = new NewsViewModel(newsDetails);
 
             return View(newsVM);
+        }
+
+        // POST: Home/Comment
+        [HttpPost]
+        public ActionResult Comment(AddComment newComment)
+        {
+            Comment comment = new Comment()
+            {
+                Text = newComment.Text,
+                Date = DateTime.Now,
+                Publisher = Guid.Parse(ClaimsPrincipal.Current.FindFirst(urlType_objectidentifier).Value),
+                PublisherName = ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value + " " + ClaimsPrincipal.Current.FindFirst(ClaimTypes.Surname).Value
+            };
+            newsManager.AddComment(comment, newComment.NewsID);
+
+            return RedirectToAction("NewsDetails", new { id = newComment.NewsID });
         }
 
         private Image GetNewsImage(string imageOption)
